@@ -1,0 +1,39 @@
+.updateUser{
+	margin-top: -120px;
+}
+.trang li{
+    text-align: center;
+    display: inline-block;
+    background: #3b5059;
+    padding: 10px;
+    border: 2px solid #4cae4c;
+}
+.trang li a{
+    color: #0b0b0b;
+}
+.trang li :hover{
+    background: yellow;
+    padding: 10px;
+    border: 2px solid #4cae4c;
+}
+#menutop{
+    position: fixed;
+    z-index: 1000;
+    top: -25px;
+    max-height: 80px;
+}
+.table{
+	padding: 5px;
+	border: 2px solid black;
+	text-align: left;
+	background: white;
+}
+.nut{
+	border: 2px solid #3b5059;
+	color: aliceblue;
+	padding: 5px;
+	background: #262626;
+}
+.table th{
+	background: #b6d2e2f2;
+}

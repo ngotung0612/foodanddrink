@@ -1,0 +1,163 @@
+<?php $this->assets->outputCss(); ?>
+<form>
+    <header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" style="background-image: url(/foodanddrink/img/background/anhnen2.jpg)" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="gtco-container">
+            <div class="row">
+                <div class="col-md-12 col-md-offset-0 text-left">
+                    <div class="donHang">
+                        <div class="menuDonHang">
+                            <ul>
+                                <li><a href="http://localhost/foodanddrink/users/donhang?tt=all&page=1">Tất cả</a></li>
+                                <li><a href="http://localhost/foodanddrink/users/donhang?tt=cho&page=1">Chờ xác nhận</a></li>
+                                <li><a href="http://localhost/foodanddrink/users/donhang?tt=danggiao&page=1">Đang giao</a></li>
+                                <li><a href="http://localhost/foodanddrink/users/donhang?tt=dagiao&page=1">Đã giao</a></li>
+                                <li><a href="http://localhost/foodanddrink/users/donhang?tt=dahuy&page=1">Đã hủy<a/></li>
+                            </ul>
+                        </div>
+                        <div class="noiDungDonHang">
+                            <table class="bangTT">
+                                <tr>
+                                    <th>Mã đơn hàng</th>
+                                    <th>Danh sách sản phẩm (hiện tối đa 5 sp)</th>
+                                    <th>Tổng tiền</th>
+                                    <th>Trạng thái</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                                <?php
+                                $i=0;
+                                foreach ($data as $x){
+                                    $listSP="";
+                                    $j=0;
+                                    foreach ($listSanPham[$i] as $sp){
+                                        $j++;
+                                        $listSP= $listSP.$sp['tenSP'].", ";
+                                        if ($j==5){
+                                            break;
+                                        }
+                                    }
+                                    $i++;
+                                    $listSP =substr($listSP,0,strlen($listSP)-2).".";
+//                                    var_dump($listSanPham);
+                                    echo '
+                                        <tr>
+                                            <td>'.$x['maDonHang'].'</td>
+                                            <td class="listSP"><a href="http://localhost/foodanddrink/users/chitietdonhang?maDonHang='.$x['maDonHang'].'">'.$listSP.'</a></td>
+                                            <td>'.$x['tongTien'].'</td>
+                                            <td>'.$x['trangThai'].'</td>';
+                                    if ($x['trangThai'] =="danggiao"){
+                                        echo '
+                                            <td><a class="btnTT" href="http://localhost/foodanddrink/donHang/chuyenTT?maDonHang='.$x['maDonHang'].'&tt=dagiao">Đã nhận</a></td>
+                                         </tr>
+                                        ';
+
+                                    }else{
+                                        if ($x['trangThai'] =="cho"){
+                                            echo '
+                                            <td><a class="btnTT" href="http://localhost/foodanddrink/donHang/chuyenTT?maDonHang='.$x['maDonHang'].'&tt=dahuy">Hủy</a></td>
+                                         </tr>
+                                        ';
+
+                                        }else{
+                                            echo '
+                                                <td><a class="btnTT" href="http://localhost/foodanddrink/users/chitietdonhang?maDonHang='.$x['maDonHang'].'">Xem chi tiết</a></td>
+                                             </tr>
+                                            ';
+                                        }
+                                    }
+                                }
+                                ?>
+                            </table>
+                            <div>
+                                <ul class="ulPhanTrang">
+                                    <?php
+                                    for ($i=1;$i<=10;$i++){
+                                        if ($i == $page){
+                                            echo '
+                                                <li><a class="active_page" href="http://localhost/foodanddrink/users/donHang?tt='.$tt.'&page='.$i.'">'.$i.'</a></li>
+                                            ';
+                                        }else{
+                                            echo '
+                                                <li><a href="http://localhost/foodanddrink/users/donHang?tt='.$tt.'&page='.$i.'">'.$i.'</a></li>
+                                            ';
+                                        }
+                                    }
+                                    ?>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+</form>
+<style>
+    .donHang{
+        margin-top: 150px;
+        height: auto;
+        background: white;
+    }
+    .menuDonHang{
+        text-align: center;
+        background: #352823;
+        height: 50px;
+    }
+    .menuDonHang ul li{
+        display: inline-table;
+        width: 120px;
+        line-height: 50px;
+        height: 50px;
+    }
+    .menuDonHang ul li a{
+        display: block;
+    }
+    .menuDonHang ul li:hover{
+        background-color: #5cb85c;
+    }
+    .noiDungDonHang{
+        color: black !important;
+        padding-bottom: 50px;
+    }
+    .listSP a{
+        color: #ea1a1a !important;
+    }
+    .bangTT{
+        color: black!important;
+        width: 100%;
+        margin-bottom: 50px;
+    }
+    .bangTT th{
+        border-bottom: 1px solid #3b5059;
+        padding: 5px;
+    }
+    .bangTT td{
+        height: 35px;
+    }
+    .bangTT td a{
+        border: 2px solid white;
+    }
+    .btnTT{
+        background: #4d4d4d;
+        width: 5px;
+        padding: 5px;
+    }
+    .bangTT td a:hover{
+        background: #ec971f;
+    }
+    .ulPhanTrang li{
+        width: 30px;
+        list-style-type: none;
+        color:black !important;
+        display: inline-table;
+        background: #4d4d4d;
+        text-align: center;
+    }
+    .ulPhanTrang li:hover{
+        background: wheat;
+    }
+    .active_page{
+        color: black!important;
+    }
+</style>

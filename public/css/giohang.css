@@ -1,0 +1,53 @@
+.tbGioHang{
+    border: 1px solid #31b0d5;
+    width: 80%;
+    margin: auto;
+    background: #e7efe9;
+    color: black;
+    margin-top: 150px;
+}
+.tbGioHang th{
+    margin: 2px;
+    background: #ffffff;
+}
+.tbGioHang td{
+    border-bottom: 1px solid #bbbbbb;
+    padding: 2px;
+}
+.tbGioHang td img{
+    width: 100px;
+}
+.numberSL{
+    width: 50px;
+}
+.btnXoa{
+    background: #513e38;
+    color: #fff8ed;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.btnXoa :hover{
+    background: yellow;
+}
+.tongTien{
+    font-family: "Times New Roman";
+    font-weight: bold;
+    font-size: 20px;
+    color: red;
+}
+.txtTongTien{
+    text-align: right;
+}
+.btnmuahang{
+    background: #68d268;
+    color: white;
+    border-radius: 5px;
+}
+.giohang{
+    height: auto;
+}
+.tbGioHang td .btnmuahang:hover{
+    background: #0d860d;
+}

@@ -1,0 +1,154 @@
+<header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" style="background-image: url(/foodanddrink/img/background/anhnen2.jpg)" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="gtco-container">
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0 text-left">
+
+
+                <div class="row row-mt-15em">
+                    <form method="post">
+                        <div class="updateUser" data-animate-effect="fadeInRight">
+                            <div class="form-wrap">
+                                <div class="tab">
+                                    <div class="tab-content">
+                                        <div class="tab-content-inner active" data-content="signup">
+                                            <h3 class="cursive-font" style="font-family:arial;text-align: center;font-style: bold;">Đăng kí thành viên mới</h3>
+
+                                            <div class="row form-group">
+                                                <div class="col-md-12">
+                                                    <label for="activities">Họ Tên</label>
+                                                    <input type="text" name="hoTen" id="hoTen" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col-md-12">
+                                                    <label for="date-start">Số điện thoại</label>
+                                                    <input type="number" name="sdt" id="sdt" class="form-control" >
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col-md-12">
+                                                    <label for="activities">Email</label>
+                                                    <input type="email" name="email" id="email" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col-md-12">
+                                                    <label for="activities">Tên tài khoản</label>
+                                                    <input type="text" id="txtUsername" name="username" placeholder="username" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col-md-12">
+                                                    <label for="date-start">Mật khẩu</label>
+                                                    <input type="password" id="txtPassword" name="password"  class="form-control" placeholder="password">
+                                                </div>
+                                            </div>
+                                            <div id="kqktUser" style="color: rgb(255, 85, 0);"></div>
+                                            <div class="row form-group">
+                                                <div class="col-md-12">
+                                                    <input type="submit" id="btnSubmit" name="btnSubmit" class="btn btn-primary btn-block" value="Đăng kí tài khoản">
+                                                </div>
+                                                <div class="col-md-12" style="margin-top: 10px;">
+                                                    <?php
+                                                    if (isset($ketQua)){
+
+                                                        echo '<i style="color: rgb(255, 85, 0);">*'.$ketQua.'</i>';
+                                                        echo '<br>';
+                                                    }
+
+                                                    ?>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<style>
+    .updateUser{
+        margin-top: -120px;
+    }
+</style>
+<?php echo \Phalcon\Tag::javascriptInclude("js/jquery-3.4.1.min.js"); ?>
+<?php //echo \Phalcon\Tag::javascriptInclude("js/kiemtradangki.js"); ?>
+<script>
+    $(document).ready(function () {
+        var ktUser,ktTen,ktSDT,ktPass;
+        // ktUser=ktPass=ktTen=ktSDT=1;
+        var username="";
+        $("#btnSubmit").attr("disabled", true);
+        $("#txtUsername").keyup(function () {
+            username = $("#txtUsername").val();
+            $.post("http://localhost/foodanddrink/users/kiemTraDangKi",{username:username},function (data) {
+                if (data.length == 0){
+                    ktUser=0;
+                    $("#kqktUser").html("");
+                }else{
+                    $("#kqktUser").html(data);
+                    ktUser=1;
+                }
+            });
+            if (ktSDT === 0 && ktTen === 0 && ktPass ===0 && ktUser === 0){
+                $("#btnSubmit").attr("disabled", false);
+            }else{
+                $("#btnSubmit").attr("disabled", true);
+            }
+        });
+        $("#txtPassword").keyup(function () {
+            var txtpassword = $("#txtPassword").val();
+            if (txtpassword.length <5){
+                $("#kqktUser").html("Mật khẩu phải lớn hơn 5 kí tự");
+                ktPass=1;
+            }else{
+                $("#kqktUser").html("");
+                ktPass=0;
+            }
+            if (ktSDT === 0 && ktTen === 0 && ktPass ===0 && ktUser === 0){
+                $("#btnSubmit").attr("disabled", false);
+            }else{
+                $("#btnSubmit").attr("disabled", true);
+            }
+        });
+        $("#hoTen").keyup(function () {
+            var hoTen= $("#hoTen").val();
+            if (hoTen.length <=3){
+                $("#kqktUser").html("Họ tên phải lớn hơn 3 kí tự");
+                ktTen=1;
+            }else {
+                $("#kqktUser").html("");
+                ktTen=0;
+            }
+            if (ktSDT === 0 && ktTen === 0 && ktPass ===0 && ktUser === 0){
+                $("#btnSubmit").attr("disabled", false);
+            }else{
+                $("#btnSubmit").attr("disabled", true);
+            }
+        });
+        $("#sdt").keyup(function () {
+            var sdt= $("#sdt").val();
+            if (sdt.length < 10){
+                $("#kqktUser").html("Số điện thoại phải có 10 số");
+                ktSDT=1;
+            }else {
+                $("#kqktUser").html("");
+                ktSDT=0;
+            }
+            if (ktSDT === 0 && ktTen === 0 && ktPass ===0 && ktUser === 0){
+                $("#btnSubmit").attr("disabled", false);
+            }else{
+                $("#btnSubmit").attr("disabled", true);
+            }
+        });
+
+    });
+</script>

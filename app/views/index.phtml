@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Welcome to Food And Drink</title>
+        <?php $this->assets->outputCss('header'); ?>
+        <link rel="shortcut icon" type="image/png" href="anh/iconHTML/titleLOGO.png"/>
+        <link rel="shortcut icon" type="image/x-icon" href="<?php echo $this->url->get('img/favicon.ico')?>"/>
+    </head>
+    <body>
+
+    <div class="gtco-loader"></div>
+
+    <div id="page">
+
+
+        <!-- <div class="page-inner"> -->
+        <nav class="gtco-nav" id="menutop" role="navigation">
+            <div class="gtco-container" id="menuFixed">
+
+                <div class="row">
+                    <div class="col-sm-4 col-xs-12">
+                        <div id="gtco-logo"><a href="http://localhost/foodanddrink">Food And Drink <em>.</em></a></div>
+                    </div>
+                    <div class="col-xs-8 text-right menu-1" >
+                        <ul>
+                            <li>
+                                <form method="get" action="http://localhost/foodanddrink/menu">
+                                    <div class="search">
+                                        <input type="text" class="txt_tk" name="timKiem" placeholder="  Tìm kiếm món ăn, đồ uống...">
+                                        <input type="submit" name="" class="btn_tk" value="Tìm Kiếm">
+                                    </div>
+                                </form>
+                            </li>
+                            <li><a href="http://localhost/foodanddrink/menu">Menu</a></li>
+                            <li class="has-dropdown">
+                                <a href="">Dịch Vụ</a>
+                                <ul class="dropdown">
+                                    <li><a href="http://localhost/foodanddrink/dichvu/datban">Đặt bàn trước</a></li>
+                                    <li><a href="#">Chương Trình Khuyến Mại</a></li>
+                                    <!-- <li><a href="#">Birthday's Celebration</a></li> -->
+                                </ul>
+                            </li>
+                            <li><a href="http://localhost/foodanddrink/lienhe">Liên Hệ</a></li>
+                            <li>||</li>
+                            <?php
+                                $username =$this->cookies->get('username');
+                                $password =$this->cookies->get('password');
+                                $this->view->setVar('kq',"ok");
+                                if (strlen($username) >0 && strlen($password)>0){
+                                    if($dataCheck=Users::findFirst("username= '$username'")){
+                                        $dataCheck= $dataCheck->toArray();
+                                    }
+                                    if ($dataCheck["password"] == $password){
+                                        echo '
+                                            <li class="has-dropdown"><a >'.$username.'</a>
+                                                <ul class="dropdown">
+                                                    <li><a href="http://localhost/foodanddrink/users/donhang?tt=all&page=1">Quản lý đơn hàng</a></li>
+                                                    <li><a href="http://localhost/foodanddrink/users/datban?tt=all&page=1">Quản lý đặt bàn</a></li>
+                                                    <li><a href="http://localhost/foodanddrink/users/update">Cập nhật thông tin</a></li>
+                                                    <li><a href="http://localhost/foodanddrink/users/changePassword">Đổi mật khẩu</a></li>
+                                                    <li><a href="http://localhost/foodanddrink/users/logout">Đăng xuất</a></li>
+                                                </ul>
+                                            </li>
+                                        ';
+                                    }else{
+                                        $dataCheckAdmin=Admin::findFirst("username= '$username'")->toArray();
+                                        if ($dataCheckAdmin["password"] == $password){
+                                            header('location:http://localhost/foodanddrink/admin/showSP');
+                                            echo '
+                                            <li class="has-dropdown"><a>'.$username.'</a>
+                                                <ul class="dropdown">
+                                                    <li><a href="http://localhost/foodanddrink/admin/showSP">Vào trang quản lý</a></li>
+                                                    <li><a href="#">Cập nhật thông tin</a></li>
+                                                    <li><a href="#">Đổi mật khẩu</a></li>
+                                                    <li><a href="http://localhost/foodanddrink/users/logout">Đăng xuất</a></li>    
+                                                </ul>
+                                            </li>
+                                        ';
+                                        }else{
+                                            echo '<li><a href="http://localhost/foodanddrink/login">Đăng Nhập</a></li>';
+                                        }
+
+                                    }
+                                }else{
+                                    echo '<li><a href="http://localhost/foodanddrink/login">Đăng Nhập</a></li>';
+                                }
+                            ?>
+
+                            <li class="has-dropdown" ><a href="http://localhost/foodanddrink/giohang/show"><img id="gioHang" class="imggiohang" src="/foodanddrink/img/icon/gioxin.PNG"><p class="slsp"><?php if (!$this->cookies->has('slsp')){echo "0";}else{echo $this->cookies->get('slsp');}?></p></a>
+                                <ul class="dropdown gio">
+                                    <div class="giohangpopup">
+
+                                    </div>
+                                </ul>
+                            </li>
+                            <!-- <li class="btn-cta"><a href="#"><span>Đặt Chỗ</span></a></li> -->
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+
+        <div class="containera">
+            <?php echo $this->getContent(); ?>
+        </div>
+    </div>
+    <footer>
+        <div class="last">
+
+            <div class="cuoicung">
+                <div class="diachi"><b>ĐỊA CHỈ MUA HÀNG</b></div>
+                <div><b>----------------------------</b></div>
+                <div class="coso">- Cs1: Số 14, Ngõ 499, Lương Ngọc Quyến, Tp Thái Nguyên</div>
+                <div><i class="fas fa-phone"></i> 0965.666.968</div>
+                <div class="coso">- Cs2: Số 140, Đ.Z115, Tp Thái Nguyên </div>
+                <div><i class="fas fa-phone"></i> 0946.366.968</div>
+                <div class="coso">- Cs3: Số 83, Lương Ngọc Quyến, Tp Thái Nguyên </div>
+                <div><i class="fas fa-phone"></i> 0945.444.968</div>
+
+            </div>
+
+            <div class="cuoicung cc2">
+                <div class="mua-hang"><b>HỖ TRỢ MUA HÀNG</b></div>
+                <div><b>-----------------------------</b></div>
+                <div class="huong-dan"><a href=""> Hướng dẫn mua hàng trực tuyến</a></div>
+
+                <div class="huong-dan"><a href=""> Thông tin chuyển khoản</a></div>
+                <div class="huong-dan"><a href=""> Phí vận chuyển</a></div>
+
+            </div>
+
+
+            <div class="cuoicung cc2">
+                <div class="chinh-sach"><b>CHÍNH SÁCH & ĐIỀU KHOẢN</b></div>
+                <div><b>-----------------------------------------</b></div>
+                <div class="dieu-khoan"><a href=""> Chính sách vận chuyển</a></div>
+                <div class="dieu-khoan"><a href=""> Chính sách đổi trả</a></div>
+
+                <div class="dieu-khoan"><a href="">Chính sách bảo mật</a></div>
+
+            </div>
+
+        </div>
+    </footer>
+    <div class="gototop js-top">
+        <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+    </div>
+    <?php $this->assets->outputJs('footer'); ?>
+    </body>
+</html>

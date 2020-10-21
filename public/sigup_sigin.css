@@ -1,0 +1,28 @@
+.last{
+	line-height: 20px;
+	display: grid;
+	grid-template-columns: 40% 30% 30%;
+	background: #443d3de6;
+	color: #c3adad;
+	float: left;
+	width: 100%;
+    padding-top: 30px;
+    /*padding-left: 50px;*/
+    padding-bottom: 30px;
+   
+}
+.last a{
+	
+	color: #c3adad;
+}
+.cuoicung{
+	margin-left: 50px;
+	font-size: 15px;
+	float: left;
+}
+.cc2{
+	padding-left: 15px;
+}
+.spc{
+	padding-bottom: 40px;
+}

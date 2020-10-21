@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Welcome to Food And Drink</title>
+    <?php $this->assets->outputCss('header'); ?>
+    <link rel="shortcut icon" type="image/png" href="anh/iconHTML/titleLOGO.png"/>
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo $this->url->get('img/favicon.ico')?>"/>
+</head>
+<body>
+
+<div class="gtco-loader"></div>
+
+<div id="page">
+
+
+    <!-- <div class="page-inner"> -->
+    <nav class="gtco-nav" id="menutop" role="navigation">
+        <div class="gtco-container" id="menuFixed">
+
+            <div class="row">
+                <div class="col-sm-4 col-xs-12">
+                    <div id="gtco-logo"><a href="http://localhost/foodanddrink">Food And Drink <em>.</em></a></div>
+                </div>
+                <div class="col-xs-8 text-right menu-1" >
+                    <ul>
+                        <li class="has-dropdown">
+                            <a href="http://localhost/foodanddrink/admin/donHang?tt=all&page=1">Quản lý đơn hàng</a>
+                        </li>
+                        <li class="has-dropdown">
+                            <a href="http://localhost/foodanddrink/admin/showSP">Quản lý sản phẩm</a>
+                            <ul class="dropdown">
+                                <li><a href="http://localhost/foodanddrink/admin/showSP">Danh sách sản phẩm</a></li>
+                                <li><a href="http://localhost/foodanddrink/admin/addSP">Thêm sản phẩm</a></li>
+                                <!-- <li><a href="#">Birthday's Celebration</a></li> -->
+                            </ul>
+                        </li>
+                        <li class="has-dropdown">
+                            <a href="http://localhost/foodanddrink/admin/datban?tt=all&page=1">Quản lý đặt bàn</a>
+                        </li>
+                        <li>||</li>
+                        <?php
+                        $username =$this->cookies->get('username');
+                        $password =$this->cookies->get('password');
+                        $this->view->setVar('kq',"ok");
+                        if (strlen($username) >0 && strlen($password)>0){
+                            if($dataCheck=Users::findFirst("username= '$username'")){
+                                $dataCheck= $dataCheck->toArray();
+                            }
+                            if ($dataCheck["password"] == $password){
+                                header('location: http://localhost/foodanddrink');
+                            }else{
+                                $dataCheckAdmin=Admin::findFirst("username= '$username'")->toArray();
+                                if ($dataCheckAdmin["password"] == $password){
+                                    echo '
+                                            <li class="has-dropdown"><a>'.$username.'</a>
+                                                <ul class="dropdown">
+                                                    <li><a href="#">Đổi mật khẩu</a></li>
+                                                    <li><a href="http://localhost/foodanddrink/users/logout">Đăng xuất</a></li>    
+                                                </ul>
+                                            </li>
+                                        ';
+                                }else{
+                                    header('location: http://localhost/foodanddrink');
+                                }
+
+                            }
+                        }else{
+                            header('location: http://localhost/foodanddrink');
+                        }
+                        ?>
+
+                        <li class="has-dropdown" ><a href="http://localhost/foodanddrink/admin/donHang?tt=cho&page=1"><img id="gioHang" class="imggiohang" src="/foodanddrink/img/icon/iconTB.PNG"><p class="sltb"><?php if (!$this->cookies->has('sltb')){echo "0";}else{echo $this->cookies->get('sltb');}?></p></a>
+                            <ul class="dropdown thongbao">
+                                <div class="thongbaoshow">
+
+                                </div>
+                            </ul>
+                        </li>
+                        <!-- <li class="btn-cta"><a href="#"><span>Đặt Chỗ</span></a></li> -->
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+    <div class="containera">
+        <?php echo $this->getContent(); ?>
+    </div>
+</div>
+
+<div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+</div>
+<?php $this->assets->outputJs('footer'); ?>
+<?php $this->assets->outputJs(); ?>
+<?php echo \Phalcon\Tag::javascriptInclude("js/nhanTB.js"); ?>
+</body>
+</html>
+<style>
+    .sltb {
+        text-align: center;
+        color: black;
+        width: 20px;
+        height: 20px;
+        font-size: 13px;
+        border-radius: 50% 50% 50% 50%;
+        background: white;
+        position: absolute;
+        right: 34px;
+        top: -2px;
+        align-items: center;
+        display: block;
+    }
+    .thongbaoshow{
+        border: 1px solid #4cae4c;
+        border-radius: 5px;
+        background: white;
+        margin-left: -100px;
+        margin-right: -20px;
+        margin-top: -20px;
+        margin-bottom: -20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
+        z-index: 99;
+    }
+</style>
+<script>
+
+</script>

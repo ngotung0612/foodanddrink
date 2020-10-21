@@ -1,0 +1,76 @@
+<?php $this->assets->outputCss(); ?>
+<form action="http://localhost/foodanddrink/giohang/xacNhanDon">
+    <header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" style="background-image: url(/foodanddrink/img/background/anhnen2.jpg)" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="gtco-container">
+            <div class="row">
+                <div class="col-md-12 col-md-offset-0 text-left">
+                    <div class="giohang">
+                        <table class="tbGioHang">
+                            <tr>
+                                <th>Hình ảnh</th>
+                                <th>Tên</th>
+                                <th>Đơn giá</th>
+                                <th>Số lượng</th>
+                                <th>Tổng tiền</th>
+                                <th>Thao tác</th>
+                            </tr>
+                            <?php
+                            foreach ($listSanPham as $x){
+                                echo '
+                                <tr class="ttsanpham">
+                                    <td><img src="/foodanddrink/files/anhsp/'.$x['hinhAnh'].'"></td>
+                                    <td>'.$x['tenSP'].'</td>
+                                    <td>'.$x['gia'].'</td>
+                                    <td>
+                                        <input type="hidden" class="maSP" value="'.$x['maSP'].'">
+                                        <div><input class="numberSL" type="number" value="'.$x['soLuong'].'" min="1"></div>
+                                    </td>
+                                    <td>'.$x['thanhTien'].'</td>
+                                    <td><a href="http://localhost/foodanddrink/users/xoaSP?maSP='.$x['maSP'].'" class="btnXoa">Xóa</td>
+                                </tr>
+                           ';
+                            }
+                            ?>
+                            <tr class="tongTien">
+                                <td colspan="4" class="txtTongTien">Tổng số tiền:</td>
+                                <td colspan="2" class="khungmuahang">
+                                    <i class="soTongTien"><?php echo $tongTien;?></i><i> đồng.</i>
+                                    <input type="submit" class="btnmuahang" name="btnSubmit" value="Mua ngay">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </header>
+</form>
+<div class="hidden">
+    <p class="username"><?php echo $this->cookies->get('username');?></p>
+</div>
+<?php $this->assets->outputJs(); ?>
+<?php echo \Phalcon\Tag::javascriptInclude("js/jquery-3.4.1.min.js"); ?>
+<?php //echo \Phalcon\Tag::javascriptInclude("js/muahang.js"); ?>
+<?php //echo \Phalcon\Tag::javascriptInclude("js/updateslsp.js"); ?>
+<script>
+    $('.numberSL').change(function () {
+        var parent =$(this).parents('.ttsanpham');
+        var maSP = parent.find('.maSP').val();
+        var soLuong = parent.find('.numberSL').val();
+        $.get("http://localhost/foodanddrink/users/updateSLSP",{maSP:maSP,soLuong:soLuong},function (data) {
+            $('.soTongTien').html(data);
+        })
+    });
+    $(document).ready(function () {
+        var tien=$('.soTongTien').html();
+        var tien = parseInt(tien);
+        if (tien<=0){
+            $('.btnmuahang').attr("disabled", true);
+            alert("Giỏ hàng của bạn đang rỗng");
+        }else{
+            $('.btnmuahang').attr("disabled", false);
+        }
+    });
+</script>

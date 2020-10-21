@@ -1,0 +1,10 @@
+.fixed{
+    position: fixed;
+    z-index: 1000;
+    top: -25px;
+    max-height: 80px;
+    /*background: #3b3d40;*/
+}
+.fixed1{
+    background: #67635173;
+}

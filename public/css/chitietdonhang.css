@@ -1,0 +1,24 @@
+.donHang{
+    margin-top: 150px;
+    height: auto;
+    background: white;
+}
+.ctdh{
+    width: 100%;
+    color: black;
+}
+.ctdh th{
+    text-align: center;
+    background: #31b0d5;
+}
+.tong{
+    font-weight: bold;
+    text-align: center;
+}
+.tbDiaChi{
+    color: black;
+    margin-top: 10px;
+}
+.tbDiaChi td{
+    padding: 5px;
+}

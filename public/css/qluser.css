@@ -1,0 +1,161 @@
+.gtco-nav{
+	position: absolute;
+    top: 6px !important;
+}
+#gtco-header {
+    height: 80px !important;
+}
+.overlay_edit {
+    height: 80px !important;
+}
+.last{
+	line-height: 20px;
+	display: grid;
+	grid-template-columns: 40% 30% 30%;
+	background: #443d3de6;
+	color: #c3adad;
+	float: left;
+	width: 100%;
+    padding-top: 30px;
+    /*padding-left: 50px;*/
+    padding-bottom: 30px;
+   
+}
+.last a{
+	
+	color: #c3adad;
+}
+.cuoicung{
+	margin-left: 50px;
+	font-size: 15px;
+	float: left;
+}
+.cc2{
+	padding-left: 15px;
+}
+.spc{
+	padding-bottom: 40px;
+}
+.main{
+	width: 90%;
+	/*height: 600px;*/
+	background: #76a0b3;
+	color: black;
+	/*margin-top: 150px;*/
+	/*margin-left: 2%;*/
+	margin-right: 100px;
+	height: auto;
+	width: 100%;
+	height: 1500px;
+	position: relative;
+		
+}
+.table{
+	position: absolute;
+	top: 10%;
+	left: 10%;
+}
+
+.gtco-nav #gtco-logo {
+    position: absolute;
+    /*top: -15px;*/
+}
+.themsp{
+	margin-left: 23.23%;
+}
+.themsp input{
+	margin-left: 50px;
+	width: 200px;
+}
+.themsp label{
+	/*margin-left: 50px;*/
+	width: 100px;
+}
+.themsp div{
+	margin-top: 5px;
+}
+
+.inputfile {
+
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.inputfile + label {
+	border:solid #3b5059 1px;
+	text-align: center;
+	width: 200px;
+	border-radius: 2px;
+	margin-left: 50px; 
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    background-color: black;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    background-color: #3b5059;
+}
+.btn_them{
+	/*margin-left: 250px; */
+	border-radius: 1px;
+}
+th td{
+	width: 100px;
+	height: 80px;
+	text-align: center;
+	margin-left: 20px;
+}
+
+.editsp{
+	position: absolute;
+	/*left: 30%;*/
+	margin-left: 100px;
+	margin-top: 40px;
+	text-align: center;
+	/*top: 5%;*/
+}
+.divTable {
+	display: table;
+	/*border-collapse: collapse;*/
+	border-spacing: 0;
+}
+.divTable .divTitle {
+	display: table-caption;
+	text-align: center;
+	font-weight: bold;
+	font-size: larger;
+}
+/*.divHeading*/
+.divTable .divHeading {
+	display: table-row;
+	font-weight: bold;
+	/*border-bottom-width: 2px;*/
+}
+.divTable .divHeading .Cell {
+	background: white;
+	height: 20px;
+	/*border-bottom-width: 2px;*/
+}
+.divTable .Row {
+	display: table-row;
+}
+/*.divTable .Row:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}*/
+.divTable .Row:hover {
+	background-color: #f5f5f5;
+	cursor: default
+}
+.divTable .Cell {
+	display: table-cell;
+	/*border: 1px solid #ddd;*/
+	border-width: thin;
+	padding: 8px;
+}

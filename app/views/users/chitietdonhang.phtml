@@ -1,0 +1,74 @@
+<?php $this->assets->outputCss(); ?>
+<form>
+    <header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" style="background-image: url(/foodanddrink/img/background/anhnen2.jpg)" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="gtco-container">
+            <div class="row">
+                <div class="col-md-12 col-md-offset-0 text-left">
+                    <div class="donHang">
+                        <table class="ctdh" border="1">
+                            <tr>
+                                <th>Tên mặt hàng</th>
+                                <th>Số lượng</th>
+                                <th>Đơn giá</th>
+                                <th>Thành tiền</th>
+                            </tr>
+                            <?php
+                            $tong=0;
+                                foreach ($data as $x){
+                                    echo '
+                                        <tr>
+                                            <td>'.$x['tenSP'].'</td>
+                                            <td>'.$x['soLuong'].'</td>
+                                            <td>'.$x['gia'].'</td>
+                                            <td>'.$x['soLuong']*$x['gia'].'</td>
+                                        </tr>
+                                    ';
+                                    $tong= $tong+$x['soLuong']*$x['gia'];
+                                }
+                                echo '
+                                    <tr class="tong">
+                                        <td colspan="2">Tổng:</td>
+                                        <td colspan="2">'.$tong.'</td>
+                                    </tr>
+                                ';
+                            ?>
+                        </table>
+                        <table class="tbDiaChi">
+                            <tr>
+                                <td>Người nhận hàng:  </td>
+                                <td><?php echo "<b> ".$ttNguoiNhan['hoTen']." - ".$ttNguoiNhan['sdt']." - ".$ttNguoiNhan['diaChi']."</b>"?></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+</form>
+<style>
+    .donHang{
+        margin-top: 150px;
+        height: auto;
+        background: white;
+    }
+    .ctdh{
+        width: 100%;
+        color: black;
+    }
+    .ctdh th{
+        text-align: center;
+        background: #31b0d5;
+    }
+    .tong{
+        font-weight: bold;
+        text-align: center;
+    }
+    .tbDiaChi{
+        color: black;
+        margin-top: 10px;
+    }
+    .tbDiaChi td{
+        padding: 5px;
+    }
+</style>

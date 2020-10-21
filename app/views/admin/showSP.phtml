@@ -1,0 +1,102 @@
+<header id="gtco-header" class="khung" role="banner" style="background-image: url()" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="gtco-container">
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0 text-left">
+
+
+                <div class="row row-mt-15em">
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="updateUser" data-animate-effect="fadeInRight">
+                            <div class="form-wrap">
+                                <div class="tab">
+                                    <div class="tab-content">
+                                        <div class="tab-content-inner active" data-content="signup">
+                                            <h3 class="cursive-font" style="font-family:arial;text-align: center;font-style: bold;">Danh sách sản phẩm</h3>
+                                            <table class="table" width="100%">
+                                                <tr>
+                                                    <th>Ảnh SP</th>
+                                                    <th>Mã SP</th>
+                                                    <th>Tên SP</th>
+                                                    <th>Loại</th>
+                                                    <th>Mo tả</th>
+                                                    <th>Giá</th>
+                                                    <th>Thao tác</th>
+                                                </tr>
+                                                <?php
+                                                foreach ($data as $x){
+                                                    echo '
+                                                        <tr>
+                                                            <td><img width="50" src="/foodanddrink/files/anhsp/'.$x['hinhAnh'].'"></td>
+                                                            <td>'.$x['maSP'].'</td>
+                                                            <td>'.$x['tenSP'].'</td>
+                                                            <td>'.$x['loai'].'</td>
+                                                            <td>'.$x['moTa'].'</td>
+                                                            <td>'.$x['gia'].'</td>
+                                                            <td ><a class="nut" href="http://localhost/foodanddrink/admin/editSP?maSP='.$x['maSP'].'">Sửa</a>
+                                                                <a class="nut" href="http://localhost/foodanddrink/admin/deleteSP?maSP='.$x['maSP'].'" onclick="return confirm(\'Bạn có chắc chắn xóa không ?\')">Xóa</a>
+                                                            </td>
+                                                        </tr>
+                                                    ';
+                                                }
+                                                ?>
+                                            </table>
+                                            <div class="phantrang">
+                                                <?php
+                                                    if(!isset($page)){
+                                                        echo '
+                                                            <ul class="trang">
+                                                                <li><a class="active_page" href="http://localhost/foodanddrink/admin/showSP?id=1">1</a></li>
+                                                                <li><a href="http://localhost/foodanddrink/admin/showSP?id=2">2</a></li>
+                                                                <li><a href="http://localhost/foodanddrink/admin/showSP?id=3">3</a></li>
+                                                                <li><a href="http://localhost/foodanddrink/admin/showSP?id=4">4</a></li>
+                                                                <li><a href="http://localhost/foodanddrink/admin/showSP?id=5">5</a></li>
+                                                            </ul>
+                                                        ';
+                                                    }else{
+                                                        echo '<ul class="trang">';
+                                                        if ($page >3){
+                                                            $pageStart = $page-2;
+                                                            $pageAnd =$page+2;
+                                                        }else{
+                                                            $pageStart = 1;
+                                                            $pageAnd =5;
+                                                        }
+                                                        for ($i= $pageStart;$i<=$pageAnd;$i++){
+                                                            if ($i == $page){
+                                                                echo '
+                                                                    <li><a class="active_page" href="http://localhost/foodanddrink/admin/showSP?id='.$i.'">'.$i.'</a></li>
+                                                                ';
+                                                            }
+                                                            else{
+                                                                echo '
+                                                                    <li><a href="http://localhost/foodanddrink/admin/showSP?id='.$i.'">'.$i.'</a></li>
+                                                                ';
+                                                            }
+                                                        }
+                                                        echo '</ul>';
+                                                    }
+                                                ?>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<style>
+    .active_page{
+        background: yellow;
+        padding: 10px;
+        border: 2px solid #4cae4c;
+    }
+</style>

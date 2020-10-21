@@ -1,0 +1,103 @@
+<?php $this->assets->outputCss(); ?>
+<form>
+    <header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" style="background-image: url(/foodanddrink/img/background/anhnen2.jpg)" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="gtco-container">
+            <div class="row">
+                <div class="col-md-12 col-md-offset-0 text-left">
+
+                    <div class="donHang">
+                        <div class="thongKeBan">
+                            <table class="tbThongKe" border="1">
+                                <tr>
+                                    <td colspan="3"><?php echo $now;?></td>
+                                    <td>Số bàn đặt trước: <?php echo $thongke['daDat'];?></td>
+                                    <td>Số bàn đã đến nhận: <?php echo $thongke['daDen'];?></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="menuDonHang">
+                            <ul>
+                                <li><a href="http://localhost/foodanddrink/admin/datban?tt=all&page=1">Tất cả</a></li>
+                                <li><a href="http://localhost/foodanddrink/admin/datban?tt=cho&page=1">Chờ xác nhận</a></li>
+                                <li><a href="http://localhost/foodanddrink/admin/datban?tt=datThanhCong&page=1">Đặt thành công</a></li>
+                                <li><a href="http://localhost/foodanddrink/admin/datban?tt=daNhanBan&page=1">Đã nhận bàn</a></li>
+                                <li><a href="http://localhost/foodanddrink/admin/datban?tt=daHuy&page=1">Đã hủy<a/></li>
+                            </ul>
+                        </div>
+                        <div class="noiDungDonHang">
+                            <div>
+                                <table class="bangTT">
+                                    <tr>
+                                        <th>Mã đặt bàn</th>
+                                        <th>Số lượng người</th>
+                                        <th>Thời gian</th>
+                                        <th>Trạng thái</th>
+                                        <th>Thao tác</th>
+                                    </tr>
+                                    <?php
+                                    $i=0;
+                                    foreach ($data as $x){
+                                        echo '
+                                            <tr>
+                                                <td>'.$x['maDatBan'].'</td>
+                                                <td>'.$x['soNguoi'].'</td>
+                                                <td >'.$x['thoiGian'].'</td>
+                                                <td>'.$x['trangThai'].'</td>';
+                                        if ($x['trangThai'] =="datThanhCong"){
+                                            echo '
+                                                <td>Chờ nhận bàn</td>
+                                             </tr>
+                                            ';
+
+                                        }else{
+                                            if ($x['trangThai'] =="cho"){
+                                                echo '
+                                                <td><a class="btnTT" href="http://localhost/foodanddrink/datban/chuyenTT?maDatBan='.$x['maDatBan'].'&tt=daHuy">Hủy</a>
+                                                    <a class="btnTT" href="http://localhost/foodanddrink/datban/chuyenTT?maDatBan='.$x['maDatBan'].'&tt=datThanhCong">Nhận</a>
+                                                </td>
+                                             </tr>
+                                            ';
+
+                                            }else{
+                                                echo '
+                                                    <td>Xong</td>
+                                                 </tr>
+                                                ';
+                                            }
+                                        }
+                                    }
+                                    ?>
+                                </table>
+                            </div>
+                            <div class="phanTrang">
+                                <ul class="ulPhanTrang">
+                                    <?php
+                                    for ($i=1;$i<=10;$i++){
+                                        if ($i == $page){
+                                            echo '
+                                                <li><a class="active_page" href="http://localhost/foodanddrink/admin/datban?tt='.$tt.'&page='.$i.'">'.$i.'</a></li>
+                                            ';
+                                        }else{
+                                            echo '
+                                                <li><a href="http://localhost/foodanddrink/admin/datban?tt='.$tt.'&page='.$i.'">'.$i.'</a></li>
+                                            ';
+                                        }
+                                    }
+                                    ?>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+</form>
+<?php echo \Phalcon\Tag::stylesheetLink("css/datban.css"); ?>
+<style>
+    .tbThongKe{
+        width: 100%;
+    }
+</style>

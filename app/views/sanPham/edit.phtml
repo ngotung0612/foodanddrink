@@ -1,0 +1,50 @@
+<div>
+    <form method="post" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <th>Ma SP</th>
+                <td>
+                    <input type="text" name="txtMaSP" disabled value="<?php echo $data['maSP']?>">
+                </td>
+            </tr>
+            <tr>
+                <th>Ten SP</th>
+                <td>
+                    <input type="text" name="txtTenSP" value="<?php echo $data['tenSP']?>">
+                </td>
+            </tr>
+            <tr>
+                <th>Loai SP</th>
+                <td>
+                    <input type="text" name="txtLoaiSP" value="<?php echo $data['loai']?>">
+                </td>
+            </tr>
+            <tr>
+                <th>Mota SP</th>
+                <td>
+                    <input type="text" name="txtMoTa" value="<?php echo $data['moTa']?>">
+                </td>
+            </tr>
+            <tr>
+                <th>Gia SP</th>
+                <td>
+                    <input type="text" name="txtGiaSP" value="<?php echo $data['gia']?>">
+                </td>
+            </tr>
+            <tr>
+                <th>Hinh SP</th>
+                <td>
+                    <img width="100px" src="/foodanddrink/files/anhsp/<?php echo $data['hinhAnh']?>">
+                    <input type="file" name="fileHinhSP" value="files/anhsp/<?php echo $data['hinhAnh']?>">
+                </td>
+            </tr>
+        </table>
+        <input type="submit" name="editSP" value="Lưu">
+    </form>
+</div>
+<?php
+    if (isset($kq)){
+        echo $kq;
+        var_dump($anh);
+    }
+?>

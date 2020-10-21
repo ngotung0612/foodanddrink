@@ -1,0 +1,70 @@
+.donHang{
+    margin-top: 150px;
+    height: auto;
+    background: white;
+}
+.menuDonHang{
+    text-align: center;
+    background: #352823;
+    height: 50px;
+}
+.menuDonHang ul li{
+    display: inline-table;
+    width: 120px;
+    line-height: 50px;
+    height: 50px;
+}
+.menuDonHang ul li a{
+    display: block;
+}
+.menuDonHang ul li:hover{
+    background-color: #5cb85c;
+}
+.noiDungDonHang{
+    color: black !important;
+    padding-bottom: 50px;
+}
+.listSP a{
+    color: #ea1a1a !important;
+}
+.bangTT{
+    color: black!important;
+    width: 100%;
+    border: 1px solid #b5b3ad;
+    margin-bottom: 50px;
+}
+.bangTT th{
+    border-bottom: 1px solid #3b5059;
+    padding: 5px;
+}
+.bangTT td{
+    height: 35px;
+}
+.bangTT td a{
+    border: 2px solid white;
+}
+.btnTT{
+    background: #4d4d4d;
+    width: 5px;
+    padding: 5px;
+}
+.bangTT td a:hover{
+    background: #ec971f;
+}
+.phanTrang{
+    width: 100%;
+}
+.ulPhanTrang li{
+    width: 30px;
+    list-style-type: none;
+    color:black !important;
+    display: inline-table;
+    background: #4d4d4d;
+    text-align: center;
+}
+.ulPhanTrang li:hover{
+    background: wheat;
+}
+.active_page{
+    color: black!important;
+}

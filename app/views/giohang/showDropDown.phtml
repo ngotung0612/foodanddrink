@@ -1,0 +1,51 @@
+<form action="http://localhost/foodanddrink/giohang/show">
+    <div class="khungGioChinh">
+        <table class="tbgiodd">
+            <tr>
+                <th>Ảnh</th>
+                <th>Tên</th>
+                <th>Giá</th>
+            </tr>
+            <?php
+            foreach ($data as $x){
+                echo '
+                    <tr>
+                        <td width="80px"><img class="anhmini" src="/foodanddrink/files/anhsp/'.$x['hinhAnh'].'"</td>
+                        <td width="130px"><p>'.$x['tenSP'].'</p></td>
+                        <td width="50px" class="giaSP"><p>'.$x['gia'].'</p></td>
+                    </tr>
+                ';
+            }
+            ?>
+            <tr>
+                <td colspan="3">
+                    <input class="btnXemChiTiet" type="submit" value="Xem chi tiết">
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>
+<style>
+    .khungGioChinh{
+        /*border: 1px solid black;*/
+        margin:auto;
+        /*width: 200px;*/
+    }
+    .giaSP{
+        color: red;
+    }
+    .khungGioChinh td{
+        padding: 2px;
+    }
+    .anhmini{
+        width: 50px;
+    }
+    .khungGioChinh th{
+        /*background: #bbbbbb;*/
+    }
+    .btnXemChiTiet{
+        background: green;
+        color: white;
+        float: right;
+    }
+</style>

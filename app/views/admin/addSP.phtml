@@ -1,0 +1,107 @@
+<header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" style="background-image: url(/foodanddrink/img/background/anhnen2.jpg)" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="gtco-container">
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0 text-left">
+
+
+                <div class="row row-mt-15em">
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="updateUser" data-animate-effect="fadeInRight">
+                            <div class="form-wrap">
+                                <div class="tab">
+                                    <div class="tab-content">
+                                        <div class="tab-content-inner active" data-content="signup">
+                                            <h3 class="cursive-font" style="font-family:arial;text-align: center;font-style: bold;">Thêm sản phẩm mới</h3>
+
+                                            <div class="row form-group">
+                                                <div class="col-md-12">
+                                                    <label for="activities">Mã sản phẩm</label>
+                                                    <input type="text" name="txtMaSP" id="maSP" class="form-control">
+                                                    <div class="thongBao">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col-md-12">
+                                                    <label for="date-start">Tên sản phẩm</label>
+                                                    <input type="text" name="txtTenSP" id="tenSP" class="form-control" >
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col-md-12">
+                                                    <label for="activities">Loại sản phẩm</label>
+                                                    <input type="text" name="txtLoaiSP" id="loai" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col-md-12">
+                                                    <label for="activities">Mô tả:</label>
+                                                    <input type="text"  name="txtMoTa" id="moTa" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col-md-12">
+                                                    <label for="activities">Giá:</label>
+                                                    <input type="number"  name="txtGiaSP" id="gia" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col-md-12">
+                                                    <label for="date-start">Hình sản phẩm (dưới 5MB)</label>
+                                                    <input type="file" id="file" name="fileHinhSP" >
+                                                </div>
+                                            </div>
+                                            <div id="kqktUser" style="color: rgb(255, 85, 0);"></div>
+                                            <div class="row form-group">
+                                                <div class="col-md-12">
+                                                    <input type="submit" id="btnSubmit" name="themSP" class="btn btn-primary btn-block" value="Thêm Sản Phẩm">
+                                                </div>
+                                                <div class="col-md-12" style="margin-top: 10px;">
+                                                    <?php
+                                                    if (isset($ketQua)){
+
+                                                        echo '<i style="color: rgb(255, 85, 0);">*'.$ketQua.'</i>';
+                                                        echo '<br>';
+                                                    }
+
+                                                    ?>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<?php echo \Phalcon\Tag::stylesheetLink("css/appsp.css"); ?>
+<?php echo \Phalcon\Tag::javascriptInclude("js/jquery-3.4.1.min.js"); ?>
+<?php echo \Phalcon\Tag::javascriptInclude("js/ktmasp.js"); ?>
+<script>
+    // $(document).ready(function () {
+    //     $('#btnSubmit').attr("disabled", true);
+    //     alert($('#'));
+    //     $('#maSP').keyup(function () {
+    //         var maSP=$('#maSP').val();
+    //         $.post("http://localhost/foodanddrink/admin/kiemTraMaSP",{maSP:maSP},function (data) {
+    //             if (data.length == 0){
+    //                 $(".thongBao").html("");
+    //                 $('#btnSubmit').attr("disabled", false);
+    //             }else{
+    //                 $(".thongBao").html(data);
+    //                 $('#btnSubmit').attr("disabled", true);
+    //             }
+    //         });
+    //     })
+    //
+    // })
+</script>

@@ -1,0 +1,54 @@
+<div class="row">
+    <?php
+    foreach ($data as $x){
+        echo '
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <a href="/foodanddrink/files/anhsp/'.$x['hinhAnh'].'" class="fh5co-card-item">
+                    <!-- <a href="anh/drink/cafe/capuchino.jpg" class="fh5co-card-item image-popup"> -->
+                    <figure>
+                        <div class="overlay"><i class="ti-plus"></i></div>
+
+                        <img src="/foodanddrink/files/anhsp/'.$x['hinhAnh'].'" alt="Image" class="img-responsive">
+                    </figure>
+                    <div class="fh5co-text">
+                        <h2>'.$x['tenSP'].'</h2>
+                        <input type="hidden" value="'.$x['maSP'].'">
+                        <p style="color: orange"><span class="price cursive-font">'.$x['gia'].'</span> .đ</p>
+                    </div>
+                </a>
+                <input type="button" class="btnmua" name="" value="Mua">
+            </div>
+        ';
+
+    }
+    ?>
+</div>
+<div class="stuffpost_paginatinonarea wow slideInLeft">
+    <ul class="newstuff_pagnav">
+        <?php
+        if ($page <=3) {
+            for ($i = 1; $i <= 5; $i++) {
+                if ($i == $page) {
+                    echo '
+                        <li><a class="active_page" href="?timKiem='.$timKiem.'&page=' . $i . '">' . $i . '</a></li>
+                    ';
+                } else {
+                    echo '<li><a href="?timKiem='.$timKiem.'&page=' . $i . '">' . $i . '</a></li>';
+                }
+            }
+        }else{
+            for ($i=$page-2;$i<=$page+2;$i++){
+                if ($i == $page) {
+                    echo '
+                        <li><a class="active_page" href="?timKiem='.$timKiem.'&page=' . $i . '">' . $i . '</a></li>
+                    ';
+                } else {
+                    echo '<li><a href="?timKiem='.$timKiem.'&page=' . $i . '">' . $i . '</a></li>';
+                }
+            }
+        }
+        ?>
+    </ul>
+</div>
+<?php echo \Phalcon\Tag::javascriptInclude("js/jquery-3.4.1.min.js"); ?>
+<?php echo \Phalcon\Tag::javascriptInclude("js/themsp.js"); ?>

@@ -1,0 +1,60 @@
+
+<header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" style="background-image: url(img/background/anhnen2.jpg)" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="gtco-container">
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0 text-left">
+
+
+                <div class="row row-mt-15em">
+                    <div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp" style="text-align: center;">
+                        <span class="intro-text-small">Creat by <a href="http://gettemplates.co" target="_blank">Food And Drink</a></span>
+                        <h1 class="cursive-font">Đậm đà hương vị Việt!</h1>
+                    </div>
+                    <div class="col-md-4 col-md-push-1 animate-box" data-animate-effect="fadeInRight">
+                        <div class="form-wrap">
+                            <div class="tab">
+
+                                <div class="tab-content">
+                                    <div class="tab-content-inner active" data-content="signup">
+                                        <h3 class="cursive-font" style="font-family:arial;text-align: center;font-style: bold;">Đăng Nhập</h3>
+                                        <form method="post">
+                                            <div class="row form-group">
+                                                <div class="col-md-12">
+                                                    <label for="activities">Tên tài khoản</label>
+                                                    <input type="text" name="username" placeholder="username" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col-md-12">
+                                                    <label for="date-start">Mật khẩu</label>
+                                                    <input type="password" name="password"  class="form-control" placeholder="password">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col-md-12">
+                                                    <input type="submit" name="btnSubmit" class="btn btn-primary btn-block" value="Đăng Nhập">
+                                                </div>
+                                                <div class="col-md-12" style="margin-top: 10px;">
+                                                    <?php
+                                                    if (isset($ketQua)){
+
+                                                        echo '<i style="color: rgb(255, 85, 0);">*'.$ketQua.'</i>';
+                                                        echo '<br>';
+                                                    }
+
+                                                    ?>
+                                                    <i style="color: rgb(182, 180, 179);">Bạn chưa có tài khoản</i>&ensp;<a href="http://localhost/foodanddrink/users/sigup">Đăng Ký</a>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
